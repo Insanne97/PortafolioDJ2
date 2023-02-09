@@ -1,0 +1,15 @@
+{% extends 'plantilla.html' %}
+
+{% block contenido %}
+            
+    <h1>Blog extendido</h1>
+
+    <h2>{{post.titulo}}</h2>
+    <p>{{post.descripcion}}</p>
+    <img src="{{post.imagen.url}}" alt="{{post.titulo}}">
+    <h3>{{post.fecha}}</h3>
+    <a href="{% url 'blog:blog' %}">Ver todos los proyectos</a>
+
+{% endblock contenido %}
+
+

@@ -1,0 +1,43 @@
+{% extends 'plantilla.html' %}
+
+{% block contenido %}
+            
+<h1>Este es el blog</h1>
+
+<div class="container">
+
+    <div class="row gx-0 d-flex justify-content-center mb-5 ">
+        {% for proyecto in proyectos %}
+        <div class="container col-lg-4">
+
+            <section class="mx-auto my-5" style="max-width: 23rem;">
+                <div class="card">
+                    <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                        <img src="{{proyecto.imagen.url}}" class="img-fluid" />
+                        <a href="#!">
+                            <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title font-weight-bold"><a>{{proyecto.titulo}}</a></h5>
+                        <p class="mb-2">{{proyecto.fecha | date:'M d Y'}}</p>
+                        <p class="card-text">{{proyecto.descripcion | truncatechars:100}}</p>
+                        <hr class="my-4" />
+                        <ul class="list-unstyled list-inline d-flex justify-content-between">
+                            <li class="list-inline-item">
+                                <a class="btn btn-primary" href="{% url 'blog:blog_extendido' proyecto.id %}">Visitar proyecto</a>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        {% endfor %}
+    </div>
+
+</div>
+
+{% endblock contenido %}
+
